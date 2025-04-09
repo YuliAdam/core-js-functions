@@ -60,7 +60,6 @@ function getArgumentsCount(funcs) {
  *
  * @param {number} exponent
  * @return {Function}
- *
  * @example
  *   const power2 = getPowerFunction(2); // => x^2
  *   power2(2) => 4
@@ -87,8 +86,11 @@ function getPowerFunction(exponent) {
  *   getPolynom(8)     => y = 8
  *   getPolynom()      => null
  */
-function getPolynom() {
-  throw new Error('Not implemented');
+function getPolynom(...rest) {
+  return rest.length === 0
+    ? null
+    : (x) =>
+        rest.reduce((acc, arg, i) => acc + arg * x ** (rest.length - 1 - i), 0);
 }
 
 /**
